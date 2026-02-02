@@ -1037,3 +1037,32 @@ function sendFormData(formData) {
     */
 }
 
+// Обработчик отправки формы — вставь в конец script.js
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch(
+            "https://alekseenkoolesa39-hash.github.io/stefania-nails/send_form",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        const data = await response.json();
+
+        if (data.status === "ok") {
+            document.getElementById("successMessage").classList.remove("hidden");
+            this.reset();
+        } else {
+            alert("Ошибка отправки заявки, попробуйте позже.");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Ошибка отправки заявки, проверьте соединение.");
+    }
+});
+
