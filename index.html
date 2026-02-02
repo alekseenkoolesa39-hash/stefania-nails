@@ -24,12 +24,10 @@
 
         <!-- Мобильный индикатор скролла -->
         <div class="mobile-scroll-indicator absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 md:hidden">
-            <div class="flex flex-col items-center">
-                <div class="scroll-arrow">
-                    <i class="fas fa-chevron-down text-xl text-pink-400"></i>
-                    <i class="fas fa-chevron-down text-xl text-pink-400 mt-1"></i>
-                    <i class="fas fa-chevron-down text-xl text-pink-400 mt-1"></i>
-                </div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down text-xl text-pink-400"></i>
+                <i class="fas fa-chevron-down text-xl text-pink-400 mt-1"></i>
+                <i class="fas fa-chevron-down text-xl text-pink-400 mt-1"></i>
             </div>
         </div>
 
@@ -48,16 +46,16 @@
                 Искусство маникюра для стильных девочек. Ищу модели на nail-сессии!
             </p>
 
-            <div class="cta-buttons flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
-                <a href="#booking" class="btn-primary wow-btn group">
+            <div class="cta-buttons flex flex-col sm:flex-row gap-3 md:gap-6 justify-center">
+                <a href="#booking" class="btn-primary wow-btn group w-full sm:w-auto">
                     <span>Записаться на маникюр</span>
                     <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
                 </a>
-                <a href="https://web.telegram.org/k/#@ssstef66" target="_blank" class="btn-telegram wow-btn group">
+                <a href="https://web.telegram.org/k/#@ssstef66" target="_blank" class="btn-telegram wow-btn group w-full sm:w-auto">
                     <i class="fab fa-telegram mr-3"></i>
                     <span>Написать в Telegram</span>
                 </a>
-                <a href="#about" class="btn-secondary wow-btn group">
+                <a href="#about" class="btn-secondary wow-btn group w-full sm:w-auto">
                     <span>Узнать больше</span>
                     <i class="fas fa-chevron-down ml-2 group-hover:translate-y-1 transition-transform"></i>
                 </a>
@@ -93,14 +91,6 @@
     <!-- Блок "О себе" -->
     <section id="about" class="section-about py-12 md:py-20 px-4 md:px-6">
         <div class="container mx-auto max-w-6xl">
-            <!-- Мобильный заголовок секции -->
-            <div class="section-indicator md:hidden mb-8 text-center">
-                <div class="inline-flex items-center text-pink-400">
-                    <i class="fas fa-chevron-right mr-2"></i>
-                    <span class="text-sm font-medium">Секция 1 из 3</span>
-                </div>
-            </div>
-
             <div class="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
                 <div class="lg:w-1/3">
                     <div class="about-image relative">
@@ -163,6 +153,10 @@
                             уделяю особое внимание здоровью ногтей и созданию гармоничного образа.
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Блок с информацией о моделировании -->
     <section class="section-info py-16 px-6 bg-gradient-to-b from-black to-gray-900">

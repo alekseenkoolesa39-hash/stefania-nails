@@ -619,8 +619,21 @@ html {
 
 /* Для мобильных устройств */
 @media (max-width: 768px) {
+    .btn-primary, .btn-secondary, .btn-telegram {
+        padding: 16px 20px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        font-size: 1rem;
+        text-align: center;
+    }
+
     .btn-telegram {
-        padding: 14px 24px;
-        font-size: 0.95rem;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .cta-buttons {
+        gap: 12px;
     }
 }
