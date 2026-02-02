@@ -1,2 +1,2 @@
 BOT_TOKEN = "8585193261:AAFfEI5TJFLQxhA73ZrCwZoq0IH0Ur-FWlM"
-CHAT_ID = "1843508792"  # Сюда будут приходить заявки
+CHAT_ID = 1843508792  # Обязательно int, а не строка

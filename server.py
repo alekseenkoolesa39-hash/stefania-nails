@@ -1,14 +1,13 @@
 from fastapi import FastAPI, Form
 from fastapi.middleware.cors import CORSMiddleware
 from bot import send_message
-from config import CHAT_ID  # CHAT_ID должен быть int
+from config import CHAT_ID
 
 app = FastAPI(title="Stefania Nails Form API")
 
-# Разрешаем запросы с GitHub Pages
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://alekseenkoolesa39-hash.github.io"],  # можно заменить на конкретный домен, например "https://alekseenkoolesa39-hash.github.io"
+    allow_origins=["https://alekseenkoolesa39-hash.github.io"],
     allow_methods=["POST"],
     allow_headers=["*"],
 )
@@ -27,11 +26,11 @@ async def send_form(
         f"<b>Дата:</b> {date}\n"
         f"<b>Комментарий:</b> {comment}"
     )
-
     try:
-        # CHAT_ID должен быть int, а не строкой
-        await send_message(int(CHAT_ID), message)
+        await send_message(CHAT_ID, message)
         return {"status": "ok", "message": "Заявка отправлена"}
     except Exception as e:
-        print(f"Ошибка при отправке в Telegram: {e}")
+        # Теперь выводим полную ошибку в лог uvicorn
+        import traceback
+        traceback.print_exc()
         return {"status": "error", "message": "Не удалось отправить заявку"}
