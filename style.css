@@ -280,6 +280,8 @@ html {
     }
 }
 
+/* Остальные стили остаются без изменений... */
+
 /* Кастомные классы для Tailwind */
 .font-sans {
     font-family: 'Quicksand', 'Segoe UI', sans-serif;
