@@ -7,6 +7,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Сайт маникюра Стефании загружен! Мобильная оптимизация активна.');
 
+    /**
+ * Умное открытие Telegram
+ */
+function openTelegram(event) {
+    // Предотвращаем стандартное поведение ссылки
+    event.preventDefault();
+
+    const username = 'ssstef66';
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    // Пытаемся открыть приложение Telegram
+    const appLink = `tg://resolve?domain=${username}`;
+
+    // Если на мобильном - открываем в приложении
+    if (isMobile) {
+        window.location.href = appLink;
+
+        // Если приложение не установлено, через 2 секунды откроем веб-версию
+        setTimeout(function() {
+            window.location.href = `https://t.me/${username}`;
+        }, 2000);
+    }
+    // Если на десктопе - открываем веб-версию
+    else {
+        window.open(`https://web.telegram.org/k/#@${username}`, '_blank');
+    }
+}
+
     // Определяем мобильное устройство
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
