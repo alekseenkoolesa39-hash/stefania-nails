@@ -1,36 +1,36 @@
 from fastapi import FastAPI, Form
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from bot import send_message
 from config import CHAT_ID
 
-app = FastAPI(title="Stefania Nails Form API")
+app = FastAPI(title="Stefania Nails API")
 
+# Разрешаем запросы с любых доменов
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://alekseenkoolesa39-hash.github.io"],
-    allow_methods=["POST"],
+    allow_origins=["*"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# Подключаем статику
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
+
 @app.post("/send_form")
-async def send_form(
-    name: str = Form(...),
-    phone: str = Form(...),
-    date: str = Form(...),
-    comment: str = Form("")
-):
-    message = (
-        f"<b>Новая заявка с сайта!</b>\n\n"
-        f"<b>Имя:</b> {name}\n"
-        f"<b>Телефон:</b> {phone}\n"
-        f"<b>Дата:</b> {date}\n"
-        f"<b>Комментарий:</b> {comment}"
-    )
+async def send_form(name: str = Form(...), phone: str = Form(...),
+                    date: str = Form(...), comment: str = Form("")):
+    message = f"""
+<b>Новая заявка с сайта!</b>
+
+<b>Имя:</b> {name}
+<b>Телефон:</b> {phone}
+<b>Дата:</b> {date}
+<b>Комментарий:</b> {comment}
+"""
     try:
-        await send_message(CHAT_ID, message)
+        await send_message(int(CHAT_ID), message)
         return {"status": "ok", "message": "Заявка отправлена"}
     except Exception as e:
-        # Теперь выводим полную ошибку в лог uvicorn
-        import traceback
-        traceback.print_exc()
+        print(f"Ошибка при отправке в Telegram: {e}")
         return {"status": "error", "message": "Не удалось отправить заявку"}

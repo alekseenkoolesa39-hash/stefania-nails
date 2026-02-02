@@ -1044,13 +1044,10 @@ document.getElementById("bookingForm").addEventListener("submit", async function
     const formData = new FormData(this);
 
     try {
-        const response = await fetch(
-            "https://alekseenkoolesa39-hash.github.io/stefania-nails/send_form",
-            {
-                method: "POST",
-                body: formData
-            }
-        );
+        const response = await fetch("/send_form", {  // <- здесь только /send_form
+            method: "POST",
+            body: formData
+        });
 
         const data = await response.json();
 
